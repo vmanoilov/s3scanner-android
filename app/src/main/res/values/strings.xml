@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">S3Scanner</string>
+    <string name="hint_bucket_name">Enter bucket name</string>
+    <string name="btn_scan">Scan Bucket</string>
+    <string name="hint_select_provider">Select cloud provider</string>
+    <string name="msg_scanning">Scanning bucket...</string>
+    <string name="error_invalid_bucket">Invalid bucket name</string>
+    <string name="error_network">Network error occurred</string>
+    <string name="warning_public_bucket">Warning: This bucket is publicly accessible!</string>
+    <string name="result_exists">Exists: %1$s</string>
+    <string name="result_public">Public Access: %1$s</string>
+    <string name="result_region">Region: %1$s</string>
+</resources>
