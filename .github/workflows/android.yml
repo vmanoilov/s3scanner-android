@@ -25,6 +25,16 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
+      - name: Install Android NDK
+        run: |
+          mkdir -p $ANDROID_HOME/ndk
+          wget https://dl.google.com/android/repository/android-ndk-r23b-linux.zip
+          unzip android-ndk-r23b-linux.zip -d $ANDROID_HOME/ndk
+          echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/android-ndk-r23b" >> $GITHUB_ENV
+
+      - name: Set up ANDROID_NDK_HOME
+        run: echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/android-ndk-r23b" >> $GITHUB_ENV
+
       - name: Install Gomobile
         run: |
           go install golang.org/x/mobile/cmd/gomobile@latest
