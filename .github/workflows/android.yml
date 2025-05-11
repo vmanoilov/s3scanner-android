@@ -35,6 +35,12 @@ jobs:
       - name: Set up ANDROID_NDK_HOME
         run: echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/android-ndk-r23b" >> $GITHUB_ENV
 
+      - name: Initialize Go Module
+        run: |
+          if [ ! -f go.mod ]; then
+            go mod init github.com/vmanoilov/s3scanner-android
+          fi
+
       - name: Install Gomobile
         run: |
           go install golang.org/x/mobile/cmd/gomobile@latest
@@ -65,5 +71,5 @@ jobs:
       - name: Upload Release APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-release
-          path: app/build/outputs/apk/release/app-release.apk
+          name: app](#)
+
