@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            final S3Scanner.ScanResult result = scanner.scanBucket(bucketName, provider);
+                            final S3Scanner.ScanResultWrapper result = scanner.scanBucket(bucketName, provider);
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void displayResult(S3Scanner.ScanResult result) {
+    private void displayResult(S3Scanner.ScanResultWrapper result) {
         if (result.getError() != null) {
             showError(result.getError());
             return;
@@ -121,3 +121,4 @@ public class MainActivity extends AppCompatActivity {
         ).show();
     }
 }
+

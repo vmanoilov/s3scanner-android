@@ -38,10 +38,10 @@ func (p *SimpleMobileProvider) CheckBucket(bucketName string) (*BucketInfo, erro
 
 	resp, err := http.Head(url)
 	if err != nil {
-		// Network error, but bucket might still exist
+		// Propagate network error so the caller can handle it
 		info.Exists = false
 		info.IsPublic = false
-		return info, nil
+		return info, err
 	}
 	defer resp.Body.Close()
 
