@@ -8,16 +8,16 @@ import scanner.ScanResult;
  * Java interface for the S3Scanner Go implementation
  */
 public class S3Scanner {
-    private final MobileScanner scanner;
+    private final MobileScanner mobileScanner;
 
-    public static class ScanResult {
+    public static class ScanResultWrapper {
         private final String bucketName;
         private final String region;
         private final boolean exists;
         private final boolean isPublic;
         private final String error;
 
-        public ScanResult(scanner.ScanResult goResult) {
+        public ScanResultWrapper(scanner.ScanResult goResult) {
             this.bucketName = goResult.getBucketName();
             this.region = goResult.getRegion();
             this.exists = goResult.getExists();
@@ -33,19 +33,19 @@ public class S3Scanner {
     }
 
     public S3Scanner() {
-        this.scanner = Scanner.newMobileScanner();
+        this.mobileScanner = Scanner.newMobileScanner();
     }
 
     public String[] getSupportedProviders() {
         return Scanner.getSupportedProviders();
     }
 
-    public ScanResult scanBucket(String bucketName, String provider) {
-        scanner.ScanResult goResult = scanner.scanBucket(bucketName, provider);
-        return new ScanResult(goResult);
+    public ScanResultWrapper scanBucket(String bucketName, String provider) {
+        scanner.ScanResult goResult = mobileScanner.scanBucket(bucketName, provider);
+        return new ScanResultWrapper(goResult);
     }
 
     public String getVersion() {
-        return scanner.getVersion();
+        return mobileScanner.getVersion();
     }
 }
